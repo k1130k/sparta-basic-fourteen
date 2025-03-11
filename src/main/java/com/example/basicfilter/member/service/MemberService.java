@@ -29,14 +29,6 @@ public class MemberService {
     @Transactional(readOnly = true)
     public List<MemberResponseDto> findAll() {
         List<Member> members = memberRepository.findAll();
-//        List<MemberResponseDto> dtos = new ArrayList<>();
-//        for (Member member : members) {
-//            dtos.add(new MemberResponseDto(
-//                    member.getId(),
-//                    member.getEmail()
-//            ));
-//        }
-//        return dtos;
         return members.stream().map(member -> new MemberResponseDto(member.getId(), member.getEmail())).toList();
     }
 
